@@ -1,0 +1,26 @@
+Tweet Streamer V1.0
+
+Usage:
+
+    Stream options:
+        [--tweetSource kafka|direct] The source of the Tweets, either a direct Twitter direct connection or over Kafka. Defaults to direct.
+        [--timeWindow 30s|5m] Tumbling window size in seconds or minutes, e.g. 30s or 5m. Default 1m.
+        [--parallelism n] Flink stream parallelism. Default 1.
+
+    Kafka options, mandatory when using a kafka connections:
+        [--kafkaServers server1:port,server2:port...] Kafka server(s). Defaults to localhost:9092.
+        [--kafkaTopic topic] Kafka topic for the Avro encoded tweets, defaults to 'tweets'.
+
+    Elasticsearch options:
+        [--elasticUrl http://host:port] Defaults to http://localhost:9200
+
+    Twitter credentials, mandatory for direct connections:
+        [--twitter-source.consumerKey xxxxxxxxx]
+        [--twitter-source.consumerSecret xxxxxxxxx]
+        [--twitter-source.token xxxxxxxxx]
+        [--twitter-source.tokenSecret xxxxxxxxx]
+
+    A java property (property=value) format config file can be used instead of cmd-line args. Cmd-line args will override file based properties
+    on a per property basis:
+        [--configFile configFilePath]
+
